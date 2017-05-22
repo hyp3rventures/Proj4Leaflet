@@ -1,13 +1,10 @@
 (function (factory) {
 	var L, proj4;
-	if (typeof define === 'function' && define.amd) {
-		// AMD
-		define(['leaflet', 'proj4'], factory);
-	} else if (typeof module === 'object' && typeof module.exports === "object") {
+	if (typeof module === 'object' && typeof module.exports === "object") {
 		// Node/CommonJS
 		L = require('leaflet');
 		proj4 = require('proj4');
-		module.exports = factory(L, proj4);
+		module.exports = factory(L, proj4.default || proj4);
 	} else {
 		// Browser globals
 		if (typeof window.L === 'undefined' || typeof window.proj4 === 'undefined')
